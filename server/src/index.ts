@@ -1,5 +1,8 @@
+import {config} from "dotenv";
+config();
+
 import express, {Request, Response} from "express";
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import Schema1 from "./models/Schema1";
 
 const PORT = 5000;
@@ -17,7 +20,7 @@ app.post("/schema1", async (req: Request, res: Response) => {
 })
 
 mongoose
-    .connect("mongodb+srv://hydroponics:3Q9qC5WGP7XXPgY0@hydroponicscluster.jjgonox.mongodb.net/")
+    .connect(process.env.MONGO_URL!)
     .then(() => {
         console.log(`listening on port ${PORT}`);
 })
